@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +15,15 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/usuarios', "api\UsuariosController@pegarTodos");
+Route::get('/usuarios/{id}','api\UsuariosController@pegarUm');
+
+Route::post('/usuarios', "api\UsuariosController@criarUm");
+
+Route::delete('/usuarios/{id}', "api\UsuariosController@deletarUm");
+
+Route::put('/usuarios/{id}', "api\UsuariosController@alterarUm");
